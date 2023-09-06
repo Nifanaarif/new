@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<style>
+body {
+  background-color: lightblue;
+}
+</style>
+    <title>Form Example</title>
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            background-color: #ee82ee;
+            padding: 20px;
+            border: 1px solid;
+            box-shadow: 0 2px 4px rgba(255, 99, 71, 0.2);
+            
+        }
+    </style>
+    <script>
+        function showSuccessPopup() {
+            var popup = document.getElementById("popup");
+            popup.innerHTML = "Form saved successfully!";
+            popup.style.display = "block";
+        }
+
+        function showInvalidDataPopup() {
+            var popup = document.getElementById("popup");
+            popup.innerHTML = "Invalid data. Please provide Name and Date of Birth.";
+            popup.style.display = "block";
+        }
+
+        function hidePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+
+        function saveForm() {
+            var name = document.getElementById("name").value;
+            var dob = document.getElementById("dob").value;
+
+            if (name === "" || dob === "") {
+                showInvalidDataPopup();
+            } else {
+                showSuccessPopup();
+            }
+        }
+
+        function clearForm() {
+            document.getElementById("name").value = "";
+            document.getElementById("address").value = "";
+            document.getElementById("dob").value = "";
+            hidePopup();
+        }
+    </script>
+</head>
+<body>
+    <form>
+<fieldset>
+
+
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address"><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required><br><br>
+
+        <button type="button" onclick="saveForm()">Save</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+</fieldset>
+    </form>
+
+    <div id="popup" class="popup">
+        <button onclick="hidePopup()">OK</button>
+    </div>
+</body>
+</html>
